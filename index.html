@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="./img/logo.png">
+  <title>Chat-menu</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="flex">
+
+        <div class="flex">
+          <button class="myProfile-btn" onclick="location.href='profile.html'">
+            <div class="flex">
+              <img id="profile-img" class="profileava" src="./img/profileava.png" alt="Profile Image">
+              <h1>Myname</h1>
+            </div>
+          </button>
+        </div>
+        <div class="flex">
+          <!-- cameraga otish buttoni -->
+          <label for="camera-input" class="camera-btn">
+            <i id="camera-icon" class="fa-solid fa-camera"></i>
+          </label>
+          <input type="file" id="camera-input" accept="image/*" style="display:none;" />
+          <button class="edit-btn"><i id="edit-icon" class="fa-solid fa-pen-to-square"></i></button>
+        </div>
+      </div>
+      <div class="search-inp">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input class="input-search" type="search" placeholder="search">
+      </div>
+      <div class="storys-swiper">
+        <div class="flex">
+          <div class=" add-story"><button class="story-add-btn" onclick="">              <img id="profile-img" class="profileava" src="./img/profileava.png" alt="Profile Image">
+            </button>
+            <p>Your Story</p>
+          </div>
+
+          <div class="swiper mySwiper">
+
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img class="img-ava-friend" src="./img/fakeava2.svg" alt="">
+                <div class="on-btn"></div>
+                <p> Javohir</p>
+              </div>
+              <div class="swiper-slide"><img class="img-ava-friend" src="./img/fakeava.svg" alt="">
+                <div class="on-btn"></div>
+                <p> Javohir</p>
+              </div>
+              <div class="swiper-slide"><img class="img-ava-friend" src="./img/fakeava2.svg" alt="">
+                <div class="on-btn"></div>
+                <p> Javohir</p>
+              </div>
+              <div class="swiper-slide"><img class="img-ava-friend" src="./img/fakeava3.svg" alt="">
+                <div class="on-btn"></div>
+                <p> Javohir</p>
+              </div>
+              <div class="swiper-slide"><img class="img-ava-friend" src="./img/fakeava3.svg" alt="">
+                <div class="on-btn"></div>
+                <p> Javohir</p>
+              </div>
+              <div class="swiper-slide"><img class="img-ava-friend" src="./img/fakeava3.svg" alt="">
+                <div class="on-btn"></div>
+                <p> Javohir</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+  <main>
+
+    <!-- contact-uchun-container -->
+
+    <div class="container contacts-container">
+      <!-- Test uchun contacktlar -->
+      
+      
+
+    </div>
+  
+    
+   
+  </main>
+
+
+  <footer>
+    <div class="nav">
+
+      <button class="nav-icon active" id="Chats" onclick=" setActive('chat') " ><i class="fa-solid fa-comment"></i></button>
+      <button class="nav-icon" id="Contacts" onclick="setActive('contact')"><i class="fa-solid fa-user-group"></i></button>
+      <button class="nav-icon" id="Browser" onclick="setActive('browser')"><i class="fa-solid fa-compass"></i></i></button>
+    </div>
+
+  </footer>
+
+  <script src="./index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="./contacts.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      centeredSlides: true,
+      spaceBetween: -450,
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+<script>
+  var swiper = new Swiper(".myContactSwiper", {
+    initialSlide: 1,         // Boshlanishida 2-chi slayd (0-indeksli)
+    slidesPerView: 1,        // 1-chi va 3-chi slaydlar ko‘rinadi
+    centeredSlides: true,    // 2-chi slayd markazda bo‘ladi
+    spaceBetween:-450,      // Slaydlar orasida bo‘shliq
+    threshold: 240,
+  });
+
+  // Swiper Wrapperni tanlash
+  const contactSwiperWrapper = document.querySelector(".myContactSwiper .swiper-wrapper");
+
+
+
+  let timer;  
+
+ addEventListener('slideChangeTransitionStart', function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      swiper.slideTo(1); 
+    }, 15000);
+  });
+</script>
+
+</body>
+
+</html>
