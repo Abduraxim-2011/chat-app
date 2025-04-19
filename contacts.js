@@ -1,99 +1,138 @@
-const contacts = [
-    { id: "contact1", firstName: "John", lastName: "Doe", image: "./img/fakeava.svg" },
-    { id: "contact2", firstName: "Jane", lastName: "Smith", image: "./img/fakeava.svg" },
-    { id: "contact3", firstName: "Alice", lastName: "Johnson", image: "https://via.placeholder.com/50" },
-    { id: "contact4", firstName: "Bob", lastName: "Brown", image: "https://via.placeholder.com/50" },
-    { id: "contact5", firstName: "Charlie", lastName: "Davis", image: "https://via.placeholder.com/50" },
-    { id: "contact6", firstName: "Dave", lastName: "Wilson", image: "https://via.placeholder.com/50" },
-    { id: "contact7", firstName: "Eva", lastName: "Thomas", image: "https://via.placeholder.com/50" },
-    { id: "contact8", firstName: "Frank", lastName: "Moore", image: "https://via.placeholder.com/50" },
-    { id: "contact9", firstName: "Grace", lastName: "Taylor", image: "https://via.placeholder.com/50" },
-    { id: "contact10", firstName: "Hannah", lastName: "Lee", image: "https://via.placeholder.com/50" },
-    { id: "contact11", firstName: "Ivy", lastName: "Harris", image: "https://via.placeholder.com/50" },
-    { id: "contact12", firstName: "Jack", lastName: "Martin", image: "https://via.placeholder.com/50" },
-    { id: "contact13", firstName: "Liam", lastName: "White", image: "https://via.placeholder.com/50" },
-    { id: "contact14", firstName: "Mia", lastName: "Walker", image: "https://via.placeholder.com/50" },
-    { id: "contact15", firstName: "Noah", lastName: "Green", image: "https://via.placeholder.com/50" },
-    { id: "contact16", firstName: "Olivia", lastName: "Adams", image: "https://via.placeholder.com/50" },
-    { id: "contact17", firstName: "Paul", lastName: "King", image: "https://via.placeholder.com/50" },
-    { id: "contact18", firstName: "Quinn", lastName: "Scott", image: "https://via.placeholder.com/50" },
-    { id: "contact19", firstName: "Rachel", lastName: "Perez", image: "https://via.placeholder.com/50" },
-    { id: "contact20", firstName: "Sam", lastName: "Robinson", image: "https://via.placeholder.com/50" }
-  ];
-
+let contacts = JSON.parse(localStorage.getItem("contacts")) || [
+  { id: 1, firstName: "Ali", lastName: "Valiyev", image: "./img/fakeava.svg" },
+  { id: 2, firstName: "Vali", lastName: "Khusanov", image: "./img/fakeava.svg" },
+  { id: 3, firstName: "Halil", lastName: "Masharipov", image: "./img/fakeava.svg" },
+  { id: 4, firstName: "Jalil", lastName: "Ashurov", image: "./img/fakeava.svg" },
+  { id: 5, firstName: "Komil", lastName: "Joraboyev", image: "./img/fakeava.svg" },
+  { id: 6, firstName: "Yobir", lastName: "Alsh", image: "./img/fakeava.svg" },
+  { id: 7, firstName: "Eva", lastName: "Elfi", image: "./img/fakeava.svg" },
+  { id: 8, firstName: "Davic", lastName: "Orto", image: "./img/fakeava.svg" },
+  { id: 9, firstName: "Jova", lastName: "Orto", image: "./img/fakeava.svg" },
+  { id: 10, firstName: "Swite", lastName: "Fox", image: "./img/fakeava.svg" },
+  { id: 11, firstName: "Abu", lastName: "Jgar", image: "./img/fakeava.svg" },
+  { id: 12, firstName: "Begi", lastName: "Kot", image: "./img/fakeava.svg" },
+  { id: 13, firstName: "Nabi", lastName: "Svarshik", image: "./img/fakeava.svg" },
+  { id: 14, firstName: "Shuxrat", lastName: "Uktamv", image: "./img/fakeava.svg" },
+  { id: 15, firstName: "Aziz", lastName: "Lazizov", image: "./img/fakeava.svg" },
+  { id: 16, firstName: "Olim", lastName: "Cola", image: "./img/fakeava.svg" },
+  { id: 17, firstName: "Azamat", lastName: "Qochoqboyev", image: "./img/fakeava.svg" },
+  { id: 18, firstName: "Davic", lastName: "Blmiman", image: "./img/fakeava.svg" },
+  { id: 19, firstName: "Jova", lastName: "Pulatov", image: "./img/fakeava.svg" },
+  { id: 20, firstName: "Abu", lastName: "Mansurov", image: "./img/fakeava.svg" }
+];
 
 const container = document.querySelector(".contacts-container");
-container.innerHTML= ""
+const searchInput = document.querySelector(".input-search");
 
-function render(){
-    contacts.forEach(e => {
-        container.innerHTML += `
-        <div id="${e.id}" class="swiper myContactSwiper">
-            <div class="swiper-wrapper swiper-flex">
-    
-              <div class="swiper-slide call-contact">
-                <button class="call-btn" onclick="location.href='call.html'">
-                  <i class="fa-solid fa-phone"></i>
-                </button>
-                <button class="videoCall-btn" onclick="location.href='VideoCall.html'">
-                  <i class="fa-solid fa-video"></i>
-                </button>
-    
-              </div>
-    
-    
-              <div class="swiper-slide contact">
+function render(contactList = contacts) {
+  container.innerHTML = "";
+
+  contactList.forEach(e => {
+    container.innerHTML += `
+      <div class="swiper myContactSwiper">
+        <div class="swiper-wrapper swiper-flex">
+          <div class="swiper-slide call-contact">
+            <button class="call-btn" onclick="location.href='call.html'">
+              <i class="fa-solid fa-phone"></i>
+            </button>
+            <button class="videoCall-btn" onclick="location.href='VideoCall.html'">
+              <i class="fa-solid fa-video"></i>
+            </button>
+          </div>
+          <div class="swiper-slide contact">
+            <div class="flex-contact">
+              <button class="contact-btn" onclick="location.href='chat.html'">
+                <img src="${e.image}" alt="Contact.ava" class="contact-ava">
+              </button>
+              <button class="contact-btn" onclick="location.href='chat.html'">
                 <div class="flex-contact">
-                  <button class="contact-btn" onclick="location.heref='chat.html'">
-                    <img src="${e.image}" alt="Contact.ava" class="contact-ava">
-                  </button>
-    
-                  <button class="contact-btn" onclick="location.href='chat.html'">
-                    <div class="flex-contact">
-                      <h1 class="contact-name " id="title"> ${e.firstName}  ${e.lastName} <br><br></h1>
-                      <p class="contact-online-time"> <br> Oxirgi Marta 9:40da onlayn edi </p>
-                    </div>
-                  </button>
-    
-    
+                  <h1 class="contact-name" id="title">${e.firstName} ${e.lastName} <br><br></h1>
+                  <p class="contact-online-time"><br> Oxirgi Marta 9:40da onlayn edi</p>
                 </div>
-              </div>
-    
-              <div class="swiper-slide delete-contact">
-                <button class="contact-profile-btn"><i class="fa-solid fa-bars"></i></button>
-                <button class="contact-mute-btn"><i class="fa-solid fa-bell-slash"></i></button>
-<button onclick="OpenDialog()"  id="openDialog "><i id="delete-contact-icon" class="fa-solid fa-trash"></i></button>
-    
-    
-    
-              </div>
-    
+              </button>
             </div>
           </div>
-            <div id="dialogOverlay" class="overlay">
-    <div class="dialogBox">
-      <h1>Bu chat butunlay oʻchirilsinmi?</h1>
-      <p class="DialogSorov">Bu nafaqat oxirgi xabarlarni emas, ${e.Firstname} bilan barcha yozishmalaringiz o'chib ketadi!</p>
-      <div class="buttons"> 
-        <button id="cancelBtn" class="cancel">Ortga</button>
-        <button id="deleteBtn" class="delete">O'chirilsin</button>
+          <div class="swiper-slide delete-contact">
+            <button class="contact-profile-btn"><i class="fa-solid fa-bars"></i></button>
+            <button class="contact-mute-btn"><i class="fa-solid fa-bell-slash"></i></button>
+            <button onclick="OpenDialog(${e.id})" id="openDialog"><i id="delete-contact-icon" class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
       </div>
-    </div>
+      <div id="overlay${e.id}" class="overlay">
+        <div class="dialogBox">
+          <h1>Bu chat butunlay oʻchirilsinmi?</h1>
+          <p class="DialogSorov">Bu nafaqat oxirgi xabarlarni emas, <span><br>"${e.firstName} ${e.lastName}"<br></span> bilan barcha yozishmalaringiz o'chib ketadi!</p>
+          <div class="buttons">
+            <button onclick="closeDialog(${e.id})" class="cancel">Ortga</button>
+            <button onclick="deleteContact(${e.id})" class="delete">O'chirilsin</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
 
-</div> `
-    })
+  reinitAllSwipers();
 }
-render(contacts);
-const openDialog = document.getElementById('openDialog');
-const cancelBtn = document.getElementById('cancelBtn');
-const overlay = document.getElementById('dialogOverlay');
-const dialogP = document.querySelector(".DialogSorov")
 
-function OpenDialog() {
-    overlay.style.display = 'block';
+function OpenDialog(id) {
+  const overlay = document.getElementById(`overlay${id}`);
+  if (overlay) overlay.style.display = 'flex';
 }
 
-cancelBtn.addEventListener('click', () => {
-    overlay.style.display = 'none';
+function closeDialog(id) {
+  const overlay = document.getElementById(`overlay${id}`);
+  if (overlay) overlay.style.display = 'none';
+}
+
+function deleteContact(id) {
+  const index = contacts.findIndex(contact => contact.id == id);
+  if (index !== -1) {
+    contacts.splice(index, 1);
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+    render();
+  }
+}
+
+function reinitAllSwipers() {
+  const swipers = document.querySelectorAll('.myContactSwiper');
+
+  swipers.forEach(swiperEl => {
+    const swiper = new Swiper(swiperEl, {
+      initialSlide: 1,
+      slidesPerView: 1,
+      centeredSlides: true,
+      spaceBetween: -450,
+      threshold: 200,
+    });
+
+    swiperEl.swiper = swiper;
+
+    swiperEl.addEventListener("touchend", () => {
+      clearTimeout(swiper.timer);
+      swiper.timer = setTimeout(() => {
+        swiper.slideTo(1);
+      }, 15000);
+    });
+  });
+}
+
+function handleSearch() {
+  const value = searchInput.value.toLowerCase().trim();
+  const filteredContacts = contacts.filter(contact =>
+    contact.firstName.toLowerCase().includes(value) ||
+    contact.lastName.toLowerCase().includes(value)
+  );
+  render(filteredContacts);
+}
+
+searchInput.addEventListener("input", handleSearch);
+
+searchInput.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    handleSearch();
+  }
 });
+
+render();
 

@@ -1,42 +1,32 @@
 document.getElementById("camera-input").addEventListener("change", function (e) {
-    var file = e.target.files[0]; // Faqat birinchi faylni olish
+    var file = e.target.files[0]; 
     if (file) {
         var reader = new FileReader();
 
-        // Rasm yuklanganida quyidagi kod ishlaydi
         reader.onload = function (event) {
-            // profile-img ID sini topib, unga rasmni o'rnatamiz
             document.getElementById("profile-img").src = event.target.result;
         };
 
-        // Faylni o'qish
         reader.readAsDataURL(file);
     }
 });
-// Profil rasmi o'zgartirilganda ishlash uchun event listener
 document.getElementById("camera-input").addEventListener("change", function (e) {
-    var file = e.target.files[0]; // Faqat birinchi faylni olish
+    var file = e.target.files[0]; 
     if (file) {
         var reader = new FileReader();
 
-        // Rasm yuklanganida quyidagi kod ishlaydi
         reader.onload = function (event) {
-            // Rasmni localStorage ga saqlaymiz
             localStorage.setItem("profileImage", event.target.result);
-            // Profil rasmi sifatida yangilaymiz
             document.getElementById("profile-img").src = event.target.result;
         };
 
-        // Faylni o'qish
         reader.readAsDataURL(file);
     }
 });
 
-// Sahifa yuklanganda rasmni localStorage dan olish
 window.onload = function () {
     var savedImage = localStorage.getItem("profileImage");
     if (savedImage) {
-        // Agar rasm mavjud bo'lsa, uni ko'rsatamiz
         document.getElementById("profile-img").src = savedImage;
     }
 };
@@ -67,3 +57,39 @@ const browserBtn = document.querySelector('#Browser')
         window.location.href = "browser.html"
     }
 }
+window.addEventListener('load', function() {
+    setTimeout(function() {
+      const loading = document.getElementById('loading');
+      const content = document.getElementById('content');
+      loading.style.display = 'none';
+      content.style.display = 'block';
+    }, 1000);
+  });
+  const modeBtn = document.getElementById('modeToggleBtn');
+  const modeIcon = document.getElementById('modeIcon');
+  
+  function setMode(mode) {
+    if (mode === 'dark') {
+      document.body.classList.add('dark');
+      modeIcon.classList.remove('fa-moon');
+      modeIcon.classList.add('fa-sun');
+    } else {
+      document.body.classList.remove('dark');
+      modeIcon.classList.remove('fa-sun');
+      modeIcon.classList.add('fa-moon');
+    }
+    localStorage.setItem('mode', mode);
+  }
+  
+  modeBtn.addEventListener('click', () => {
+    const isDark = document.body.classList.contains('dark');
+    setMode(isDark ? 'light' : 'dark');
+  });
+  
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedMode = localStorage.getItem('mode') || 'light';
+    setMode(savedMode);
+  });
+  
+    
+  
